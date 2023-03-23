@@ -15,9 +15,9 @@ public class testAdd {
     private NotaValidator notaValidator = new NotaValidator();
     private TemaValidator temaValidator = new TemaValidator();
 
-    private StudentXMLRepository studentXMLRepo = new StudentXMLRepository(studentValidator, "studenti.xml");
-    private NotaXMLRepository notaXMLRepo = new NotaXMLRepository(notaValidator, "teme.xml");
-    private TemaXMLRepository temaXMLRepo = new TemaXMLRepository(temaValidator, "note.xml");
+    private StudentXMLRepository studentXMLRepo = new StudentXMLRepository(studentValidator, "./src/test/java/studenti.xml");
+    private NotaXMLRepository notaXMLRepo = new NotaXMLRepository(notaValidator, "./src/test/java/note.xml");
+    private TemaXMLRepository temaXMLRepo = new TemaXMLRepository(temaValidator, "./src/test/java/teme.xml");
 
     private Service service = new Service(studentXMLRepo, temaXMLRepo, notaXMLRepo);
 
