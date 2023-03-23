@@ -24,6 +24,7 @@ public class testAdd {
 
     @Test
     public void testAddStudentSuccess(){
+        System.out.println("Testul a fost rulat");
         assertEquals(1,service.saveStudent("50", "Mihailescu", 931));
         service.deleteStudent("50");
     }
