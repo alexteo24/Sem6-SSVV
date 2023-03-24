@@ -7,6 +7,7 @@ import ssvv.project.validation.StudentValidator;
 import ssvv.project.validation.TemaValidator;
 
 import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.Assertions;
 
 public class TestAdd {
 
@@ -23,13 +24,44 @@ public class TestAdd {
 
     @Test
     public void TestAddStudentSuccess(){
-//        System.out.println("Testul a fost rulat");
-//        assertEquals(1,service.saveStudent("50", "Mihailescu", 931));
-//        service.deleteStudent("50");
+        Assertions.assertEquals(1,service.saveStudent("50", "Mihailescu", 931));
+        service.deleteStudent("50");
     }
 
-//    @Test
-//    public void testAddStudentFailure(){
-//        assertEquals(0, service.saveStudent("98", "Georgescu", 999));
-//    }
+    @Test
+    public void TestAddStudentInvalidGroupNumberHigher(){
+        Assertions.assertEquals(0, service.saveStudent("98", "Georgescu", 999));
+    }
+
+    @Test
+    public void TestAddStudentInvalidGroupNumberLower(){
+        Assertions.assertEquals(0, service.saveStudent("98", "Georgescu", 109));
+    }
+
+    @Test
+    public void TestAddStudentIdNull(){
+        Assertions.assertEquals(0, service.saveStudent(null, "Georgescu", 931));
+    }
+
+    @Test
+    public void TestAddStudentIdEmpty(){
+        Assertions.assertEquals(0, service.saveStudent("", "Georgescu", 931));
+    }
+
+    @Test
+    public void TestAddStudentIdNotUnique(){
+        service.saveStudent("id", "Georgescu", 931);
+        Assertions.assertEquals(0, service.saveStudent("id", "Georgescu", 931));
+        service.deleteStudent("id");
+    }
+
+    @Test
+    public void TestAddStudentNameNull(){
+        Assertions.assertEquals(0, service.saveStudent("id", null, 931));
+    }
+
+    @Test
+    public void TestAddStudentNameEmpty(){
+        Assertions.assertEquals(0, service.saveStudent("id", "", 931));
+    }
 }
