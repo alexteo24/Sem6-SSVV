@@ -9,7 +9,7 @@ import ssvv.project.validation.TemaValidator;
 import org.junit.jupiter.api.*;
 import org.junit.jupiter.api.Assertions;
 
-public class TestAdd {
+public class TestAddStudent {
 
     private StudentValidator studentValidator = new StudentValidator();
     private NotaValidator notaValidator = new NotaValidator();
