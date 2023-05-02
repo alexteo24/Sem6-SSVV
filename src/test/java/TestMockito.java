@@ -23,28 +23,24 @@ import static org.mockito.Mockito.when;
 
 @RunWith(MockitoJUnitRunner.class)
 public class TestMockito {
-
+    @InjectMocks
+    Service service;
     @Mock
     StudentXMLRepository studentXMLRepo;
     @Mock
-    NotaXMLRepository notaXMLRepo;
+    StudentValidator sval;
     @Mock
     TemaXMLRepository temaXMLRepo;
-
-    StudentValidator sval;
+    @Mock
     TemaValidator tval;
+    @Mock
+    NotaXMLRepository notaXMLRepo;
+    @Mock
     NotaValidator nval;
-
-    Service service;
 
     @Before
     public void setUp(){
         MockitoAnnotations.initMocks(this);
-
-        sval = new StudentValidator();
-        tval = new TemaValidator();
-        nval = new NotaValidator();
-        service = new Service(studentXMLRepo, temaXMLRepo, notaXMLRepo);
     }
 
     @Test
@@ -76,11 +72,10 @@ public class TestMockito {
     public void saveGrade(){
         Student s = new Student("1", "name", 931);
         Tema t = new Tema("1", "desc", 10, 8);
-        Nota n = new Nota(new Pair<String, String>("1", "1"), 10, 9, "good");
+        Nota n = new Nota(new Pair<>("1", "1"), 10, 9, "good");
         Mockito.when(studentXMLRepo.save(s)).thenReturn(s);
         Mockito.when(temaXMLRepo.save(t)).thenReturn(t);
-        Mockito.when(notaXMLRepo.save(n)).thenReturn(null);
-        
+//        Mockito.when(notaXMLRepo.save(n)).thenReturn(null);
 
         int sres = service.saveStudent("1", "name", 931);
         int tres = service.saveTema("1", "desc", 10, 8);
