@@ -44,7 +44,7 @@ public class TestMockito {
     }
 
     @Test
-    public void saveStudent(){
+    public void TestSaveStudent(){
         Student s = new Student("1", "name", 931);
         Mockito.when(studentXMLRepo.save(s)).thenReturn(null);
 
@@ -55,7 +55,7 @@ public class TestMockito {
     }
 
     @Test
-    public void saveAssignment(){
+    public void TestSaveAssignment(){
         Student s = new Student("1", "name", 931);
         Tema t = new Tema("1", "desc", 10, 8);
         Mockito.when(studentXMLRepo.save(s)).thenReturn(null);
@@ -69,7 +69,7 @@ public class TestMockito {
     }
 
     @Test
-    public void saveGrade(){
+    public void TestSaveGrade(){
         Student s = new Student("1", "name", 931);
         Tema t = new Tema("1", "desc", 10, 8);
         Nota n = new Nota(new Pair<>("1", "1"), 10, 9, "good");
