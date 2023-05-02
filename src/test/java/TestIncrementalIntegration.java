@@ -37,14 +37,15 @@ public class TestIncrementalIntegration {
     @Test
     public void testValidate() {
         studentValidator = Mockito.mock(StudentValidator.class);
-//        try {
-//            var student = new Student("1", "name", 936);
-//            studentValidator.validate(student);
-//        } catch (ValidationException e) {
-//            assert(false);
-//        }
+        try {
+            var student = new Student("1", "name", 936);
+            studentValidator.validate(student);
+        } catch (ValidationException e) {
+            assert(false);
+        }
         try {
             var student = new Student("", "name", 9136);
+            studentValidator.validate(student);
             assert(false);
         } catch (ValidationException e) {
             assert(true);
